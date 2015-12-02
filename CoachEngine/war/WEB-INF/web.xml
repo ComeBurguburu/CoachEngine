@@ -8,10 +8,15 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 		<servlet-name>CoachEngine</servlet-name>
 		<servlet-class>charbon_burguburu.CoachEngineServlet</servlet-class>
 	</servlet>
+	<servlet>
+		<servlet-name>DescriptionCache</servlet-name>
+		<servlet-class>charbon_burguburu.DescriptionCache</servlet-class>
+	</servlet>
 	<servlet-mapping>
 		<servlet-name>CoachEngine</servlet-name>
 		<url-pattern>/coachengine</url-pattern>
 	</servlet-mapping>
+<<<<<<< Updated upstream
 	<servlet>
 	    <servlet-name>Success</servlet-name>
 	    <servlet-class>charbon_burguburu.Success</servlet-class>
@@ -19,6 +24,11 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	<servlet-mapping>
 	    <servlet-name>Success</servlet-name>
 	    <url-pattern>/success</url-pattern>
+=======
+	<servlet-mapping>
+		<servlet-name>DescriptionCache</servlet-name>
+		<url-pattern>/descriptioncache</url-pattern>
+>>>>>>> Stashed changes
 	</servlet-mapping>
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>
