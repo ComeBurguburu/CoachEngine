@@ -1,0 +1,2 @@
+https://accounts.google.com/o/oauth2/auth?redirect_uri=http%3A%2F%2Fwww.google.com%2F&scope=email%20profile&state=%2Fprofile&response_type=token&client_id=597255536327-6jmb66vo38bgpdfmv7h5pd91qrcoliqm.apps.googleusercontent.com
+https://accounts.google.com/o/oauth2/auth?redirect_uri=http%3A%2F%2F127.0.0.1%3A8888%2Fsuccess.html&scope=email%20profile&state=%2Fprofile&response_type=token&client_id=597255536327-6jmb66vo38bgpdfmv7h5pd91qrcoliqm.apps.googleusercontent.com
