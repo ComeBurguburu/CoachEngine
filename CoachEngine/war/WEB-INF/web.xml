@@ -23,6 +23,7 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	<servlet-mapping>
 	    <servlet-name>Success</servlet-name>
 	    <url-pattern>/success</url-pattern>
+	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>DescriptionCache</servlet-name>
 		<url-pattern>/descriptioncache</url-pattern>
