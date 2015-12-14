@@ -14,6 +14,7 @@ public class Training {
 	private ArrayList<Exercice> exercices;
 
 	public Training(JSONObject json){
+		
 		try {
 			this.title=json.getString("title");
 			this.description = json.getString("description");
@@ -43,6 +44,10 @@ public class Training {
 		this.domaine=domaine;
 		this.exercices = new ArrayList<Exercice>();
 	}
+	public Training() {
+		this.exercices = new ArrayList<Exercice>();
+	}
+
 	public JSONObject toJSON(){
 		JSONObject o = new JSONObject();
 		try {

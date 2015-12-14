@@ -27,7 +27,7 @@ public class AddTraining extends HttpServlet{
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+	private DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 
 
 	@Override
