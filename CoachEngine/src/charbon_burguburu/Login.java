@@ -14,6 +14,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.google.appengine.api.memcache.jsr107cache.GCacheFactory;
+import com.google.appengine.labs.repackaged.org.json.JSONException;
+import com.google.appengine.labs.repackaged.org.json.JSONObject;
 
 public class Login extends HttpServlet{
 
@@ -22,6 +24,7 @@ public class Login extends HttpServlet{
 			throws ServletException, IOException {
 			String login = req.getParameter("login");
 			String email =req.getParameter("email");
+			String picture =req.getParameter("picture");
 			
 			CacheFactory cacheFactory = null;
 			Cache cache = null;
@@ -39,10 +42,48 @@ public class Login extends HttpServlet{
 
 			cache.put("login", login);
 			cache.put("email", email);
+			cache.put("picture", picture);
 			
 			resp.getWriter().print("ok");
-			
 
 	}
+
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
+			throws ServletException, IOException {
+		CacheFactory cacheFactory = null;
+		Cache cache = null;
+		Map props = new HashMap();
+		props.put(GCacheFactory.EXPIRATION_DELTA, 3600);
+		JSONObject json_object = new JSONObject();
+		
+		try {
+			cacheFactory = CacheManager.getInstance().getCacheFactory();
+			cache = cacheFactory.createCache(props);
+		} catch (CacheException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			
+				
+			
+			resp.getWriter().write(json_object.toString());
+			return;
+		}
+
+		String login = (String) cache.get("login");
+		String email = (String) cache.get("email");
+		String picture = (String) cache.get("picture");
+		try{
+			json_object.put("login", login);
+			json_object.put("email", email);
+			json_object.put("picture", picture);
+		}catch(Exception e){
+			e.printStackTrace();
+		}
+		resp.getWriter().print(json_object.toString());
+		
+		
+	}
+	
 
 }

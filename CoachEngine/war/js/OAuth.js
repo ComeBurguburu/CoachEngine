@@ -1,3 +1,4 @@
+"use strict";
 function hash() {
     var obj = {};
    $(location).prop("hash").slice(1).split("&").forEach(function (param) {var tab = param.split("="); if (tab.length === 2) {if (obj[tab[0]] === undefined) {obj[tab[0]] = tab[1]; } else {if (typeof obj[tab[0]] !== "object") {obj[tab[0]] = [obj[tab[0]]]; obj[tab[0]].push(tab[1]); } } } });
@@ -18,10 +19,11 @@ $.ajax({
     console.log(userInfo);
     var login = userInfo.displayName;
     var email = userInfo.emails[0].value;
+    var picture = userInfo.image.url;
     $(".name").html(login);
-    $(".pict").prop("src",userInfo.image.url);
+    $(".pict").prop("src",picture);
     $(".email").html(email);
-    $.post("/login",{login:login,email:email});
+    $.post("/login",{login:login,email:email,picture:picture});
   },
   error: function(e) {
     console.log('error');
