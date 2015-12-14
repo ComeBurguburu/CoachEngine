@@ -41,9 +41,10 @@ public class Search extends HttpServlet{
 		for (Entity result : pq.asIterable()) {
 			String title = (String) result.getProperty("title");
 			String id = (String) result.getProperty("ID/Name");
+			Long time=(Long)result.getProperty("time");
 
 			try {
-				response.getJSONArray("training").put(new Link(title,id).toJSON());
+				response.getJSONArray("training").put(new Link(title,id,time).toJSON());
 			} catch (JSONException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
@@ -57,8 +58,10 @@ public class Search extends HttpServlet{
 		for (Entity result : pq.asIterable()) {
 			String title = (String) result.getProperty("title");
 			Object id = result.getProperty("training");
+			Long time=(Long)result.getProperty("time");
+			
 			try {
-				response.getJSONArray("exercice").put(new Link(title,id).toJSON());
+				response.getJSONArray("exercice").put(new Link(title,id,time).toJSON());
 			} catch (JSONException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

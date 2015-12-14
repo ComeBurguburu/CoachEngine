@@ -41,7 +41,6 @@ public class AddTraining extends HttpServlet{
 			
 			while(it.hasNext()){
 				addExercice(it.next(),TrainingKey);
-				System.out.println("add to DB");
 			}
 
 		} catch (JSONException e) {

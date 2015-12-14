@@ -10,7 +10,8 @@ import com.google.appengine.labs.repackaged.org.json.JSONObject;
 public class Training {
 	private String title;
 	private String description;
-	private String domaine;	
+	private String domaine;
+	private Long time;
 	private ArrayList<Exercice> exercices;
 
 	public Training(JSONObject json){
@@ -54,6 +55,7 @@ public class Training {
 			o.put("title",title);
 			o.put("description",description);
 			o.put("domaine",domaine);
+			o.put("time", time);
 			o.put("exercices", this.getJSONArray());
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block

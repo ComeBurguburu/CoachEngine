@@ -28,3 +28,6 @@ transform: scale(.54);
 -o-transform: scale(1); / Opera /
 -moz-transform: scale(1); / Firefox */
 }
+.white{
+	color: white;
+}
