@@ -16,9 +16,12 @@ $.ajax({
   success: function(userInfo) {
     //info about user
     console.log(userInfo);
-    $(".name").html(userInfo.displayName)
+    var login = userInfo.displayName;
+    var email = userInfo.emails[0].value;
+    $(".name").html(login);
     $(".pict").prop("src",userInfo.image.url);
-    $(".email").html(userInfo.emails[0].value);
+    $(".email").html(email);
+    $.post("/login",{login:login,email:email});
   },
   error: function(e) {
     console.log('error');
