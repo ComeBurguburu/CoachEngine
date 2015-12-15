@@ -23,6 +23,7 @@ $.ajax({
     $(".name").html(login);
     $(".pict").prop("src",picture);
     $(".email").html(email);
+   var userId = userInfo.id;
     $.post("/login",{login:login,email:email,picture:picture});
   },
   error: function(e) {

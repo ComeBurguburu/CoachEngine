@@ -2,8 +2,6 @@
 $.get("/addtraining",function(response){
 	
 	var json = JSON.parse(response);
-	console.log(json);
-	window.test = json;
 	var index = 0;
 	var block = $("tr:eq(0)").clone();
 	$.each(json.Exercice, function(key, value){
@@ -12,6 +10,7 @@ $.get("/addtraining",function(response){
 		setDescription(index,value.Description);
 		setFlip(index,value.Date);
 		index++;
+		
 		if(index < json.Exercice.length){
 			$("table").append(block.clone());
 		}
@@ -22,6 +21,9 @@ $.get("/addtraining",function(response){
 function setTitle(index, value){
 	$(".title-exercice").eq(index).text(value);
 }
+function getTitle(index, value){
+	return $(".title-exercice").eq(index).text();
+}
 function setTime(index, value){
 	$(".time-exercice").eq(index).text(value);
 }
@@ -31,7 +33,6 @@ function setDescription(index, value){
 function setFlip(index, value){
 	console.assert(value!=undefined);
 	var elem = $(".flip").eq(index);
-	console.log(index+': 5.10.2012 '+value);
 	var date=new Date('5.10.2012 '+value);
 	var  time=date.getTime();
 
@@ -42,3 +43,15 @@ function setFlip(index, value){
              return date;
          }});
 }
+
+var userExerciceData = {
+		date: new Date(),
+		idUser: idUser,
+		planTitle: "",
+		exerciceTitle: getTitle(index),
+		status: "success"
+};
+console.log(userExerciceData);
+$("#validate").click(function(){
+	alert("entraine toi");
+});
