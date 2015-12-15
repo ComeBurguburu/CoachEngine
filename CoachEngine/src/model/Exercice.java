@@ -51,7 +51,6 @@ public class Exercice {
 			o.put("Description", description);
 			o.put("Date", time);
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return o;

@@ -33,7 +33,7 @@ function setFlip(index, value){
 	var elem = $(".flip").eq(index);
 	console.log(index+': 5.10.2012 '+value);
 	var date=new Date('5.10.2012 '+value);
-  var  time=date.getTime();
+	var  time=date.getTime();
 
     $(elem).flipcountdown({speedFlip:60,tick:function(){
              var currentTime=time-1000;
@@ -41,5 +41,4 @@ function setFlip(index, value){
              	date=new Date(currentTime);
              return date;
          }});
-    console.log(elem);
 }
