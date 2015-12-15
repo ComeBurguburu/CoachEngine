@@ -38,7 +38,7 @@ function setFlip(index, value){
 		
 		$(this).parents("tr").find(".flip").data("start","false")
 	})
-	$(elem).parents("tr").find(".start").click(function(){
+	$(elem).parents("tr").find(".play").click(function(){
 		$(this).parents("tr").find(".flip").data("start","true")
 	})
 	
@@ -47,7 +47,7 @@ function setFlip(index, value){
     		var sec = $(this).data("time")==undefined?0:parseInt($(this).data("time"),10);
              var currentTime;
              
-    		if($(this).data("start")!=="true"){
+    		if($(this).data("start")!=="false"){
     			currentTime=time-1000;
     			sec++;
     		}else{
@@ -61,7 +61,9 @@ function setFlip(index, value){
 }
 
 
-
+function getDuration(index){
+	return parseInt($(".flip").eq(index).data("time"),10);
+}
 
 $(".validate").click(function(){
 	alert("entraine toi");
