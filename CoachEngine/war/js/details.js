@@ -45,7 +45,7 @@ function setFlip(index, value){
 
 var userExerciceData = {
 		date: new Date(),
-		
+		//idUser: userId,
 		planTitle: "",
 		exerciceTitle: getTitle(0),
 		status: "success"
