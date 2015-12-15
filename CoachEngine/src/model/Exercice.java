@@ -6,22 +6,22 @@ import com.google.appengine.labs.repackaged.org.json.JSONObject;
 public class Exercice {
 	private String title;
 	private String description;
-	private Long time;
+	private String time;
 
 	public Exercice(JSONObject json){
 		try {
 			this.title=json.getString("Title");
 			this.description = json.getString("Description");
-			//this.time = json.getLong("Date");
+			this.time = json.getString("Date");
 		} catch (JSONException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 	}
 
-	public Exercice(String title, String description) {
+	public Exercice(String title, String description, String time) {
 		this.title=title;
 		this.description=description;
+		this.time = time;
 	}
 
 	public String getTitle() {
@@ -40,7 +40,7 @@ public class Exercice {
 		this.description = description;
 	}
 
-	public Long getTime() {
+	public String getTime() {
 		return time;
 	}
 
@@ -48,9 +48,8 @@ public class Exercice {
 		JSONObject o = new JSONObject();
 		try {
 			o.put("Title", title);
-
 			o.put("Description", description);
-			o.put("Time", time);
+			o.put("Date", time);
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

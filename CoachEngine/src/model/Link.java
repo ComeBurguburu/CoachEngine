@@ -6,9 +6,9 @@ import com.google.appengine.labs.repackaged.org.json.JSONObject;
 public class Link {
 	private String url;
 	private String name;
-	private Long time;
+	private String time;
 	
-	public Link(String name,Object id,Long time){
+	public Link(String name,Object id,String time){
 		this.name=name;
 		this.url=generateLink(id);
 		this.time = time;

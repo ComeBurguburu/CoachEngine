@@ -11,7 +11,7 @@ public class Training {
 	private String title;
 	private String description;
 	private String domaine;
-	private Long time;
+	private String time;
 	private ArrayList<Exercice> exercices;
 
 	public Training(JSONObject json){
@@ -20,6 +20,7 @@ public class Training {
 			this.title=json.getString("Title");
 			this.description = json.getString("Description");
 			this.domaine=json.getString("Domain");
+			this.time=json.getString("Date");
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -39,10 +40,11 @@ public class Training {
 		}
 	}
 
-	public Training(String title, String description, String domaine) {
+	public Training(String title, String description, String domaine,String time) {
 		this.title=title;
 		this.description=description;
 		this.domaine=domaine;
+		this.time=time;
 		this.exercices = new ArrayList<Exercice>();
 	}
 	public Training() {
@@ -55,7 +57,7 @@ public class Training {
 			o.put("Title",title);
 			o.put("Description",description);
 			o.put("Domaine",domaine);
-			o.put("Time", time);
+			o.put("Date", time);
 			o.put("Exercice", this.getJSONArray());
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
@@ -103,6 +105,10 @@ public class Training {
 
 	public void addExercice(Exercice ex) {
 		this.exercices.add(ex);	
+	}
+
+	public String getTime() {
+		return this.time;
 	}
 
 }

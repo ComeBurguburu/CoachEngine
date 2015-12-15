@@ -48,6 +48,7 @@ $("#buttonAddEx").click(function() {
 	
 	DateTmp=parseInt(currentExo.Hours,10)*3600+parseInt(currentExo.Minutes,10)*60+parseInt(currentExo.Seconds,10)
 	DateOKLM=DateOKLM+DateTmp;
+	currentExo.Date=DateOKLM.toHHMMSS();
 	
 	
 	

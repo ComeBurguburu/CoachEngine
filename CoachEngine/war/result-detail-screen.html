@@ -57,7 +57,7 @@
                             </div>
                             <div class=" col-md-3 col-sm-12 col-xs-12 ">
                                 <div class=" col-md-12 col-sm-12 col-xs-12 ">
-                                    <div id="flipcountdownbox1">                            
+                                    <div class="flip">                            
                                     </div>
                                 </div>
                                 <div class=" col-md-12 col-sm-12 col-xs-12 centered">
@@ -113,35 +113,17 @@
     <script src="js/details.js"></script>
     <script>
         $(document).ready(function() { 
-            $("#e1").select2(); 
+         /* 
             date=new Date('5.10.2012 00:20:00');
             time=date.getTime();
-            
-            date2=new Date('5.10.2012 00:05:00');
-            time2=date2.getTime();
-            
-            date3=new Date('5.10.2012 00:25:00');
-            time3=date.getTime();
-           $("#flipcountdownbox1").flipcountdown();/*{speedFlip:60,tick:function(){
+
+           $("#flipcountdownbox1").flipcountdown({speedFlip:60,tick:function(){
                     currentTime=time-1000;
                     time=currentTime;
                     date=new Date(currentTime);
                     return date;
-                }});
-            /*
-            $("#flipcountdownbox2").flipcountdown({speedFlip:60,tick:function(){
-                    currentTime=time2-1000;
-                    time2=currentTime;
-                    date2=new Date(currentTime);
-                    return date2;
-                }});
-            
-            $("#flipcountdownbox3").flipcountdown({speedFlip:60,tick:function(){
-                    currentTime=time3-1000;
-                    time3=currentTime;
-                    date3=new Date(currentTime);
-                    return date3;
                 }});*/
+         
         });
     </script>
              

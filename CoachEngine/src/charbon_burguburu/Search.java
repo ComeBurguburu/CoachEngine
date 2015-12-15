@@ -41,7 +41,7 @@ public class Search extends HttpServlet{
 		for (Entity result : pq.asIterable()) {
 			String title = (String) result.getProperty("title");
 			String id = (String) result.getProperty("ID/Name");
-			Long time=(Long)result.getProperty("time");
+			String time=(String)result.getProperty("time");
 
 			try {
 				response.getJSONArray("training").put(new Link(title,id,time).toJSON());
@@ -58,7 +58,7 @@ public class Search extends HttpServlet{
 		for (Entity result : pq.asIterable()) {
 			String title = (String) result.getProperty("title");
 			Object id = result.getProperty("training");
-			Long time=(Long)result.getProperty("time");
+			String time=(String)result.getProperty("time");
 			
 			try {
 				response.getJSONArray("exercice").put(new Link(title,id,time).toJSON());

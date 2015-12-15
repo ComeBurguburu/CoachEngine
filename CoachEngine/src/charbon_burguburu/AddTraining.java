@@ -14,7 +14,6 @@ import model.Training;
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
 import com.google.appengine.api.datastore.Entity;
-import com.google.appengine.api.datastore.Key;
 import com.google.appengine.api.datastore.PreparedQuery;
 import com.google.appengine.api.datastore.Query;
 import com.google.appengine.labs.repackaged.org.json.JSONException;
@@ -32,19 +31,16 @@ public class AddTraining extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String training = req.getParameter("training");
-		System.out.println("doPost add Training");
-		System.out.println(req.getParameterMap());
-		System.out.println(training);
-		
+		System.out.println("doPost add Training");		
 		
 		try {
 			JSONObject json_training = new JSONObject(training);
 			Training t=new Training(json_training);
-			Key TrainingKey = addTraining(t);
+			Long TrainingId = addTraining(t);
 			 Iterator<Exercice> it = t.getExercices().iterator();
 			
 			while(it.hasNext()){
-				addExercice(it.next(),TrainingKey);
+				addExercice(it.next(),TrainingId);
 			}
 
 		} catch (JSONException e) {
@@ -71,7 +67,8 @@ public class AddTraining extends HttpServlet{
 		 String title = (String) result.getProperty("title");
 		 String description = (String) result.getProperty("description");
 		 String domaine = (String) result.getProperty("domaine");
-		train = new Training(title,description,domaine);
+		 String time = (String) result.getProperty("time");
+		train = new Training(title,description,domaine,time);
 		}
 		q = new Query("Exercice");
 		//q.addFilter("training", Query.FilterOperator.EQUAL, train.getTrainingKey());
@@ -80,7 +77,8 @@ public class AddTraining extends HttpServlet{
 		for (Entity result : pq.asIterable()) {
 		 String title = (String) result.getProperty("title");
 		 String description = (String) result.getProperty("description");
-		 Exercice ex = new Exercice(title,description);
+		 String date=(String)result.getProperty("time");
+		 Exercice ex = new Exercice(title,description,date);
 		 train.addExercice(ex);
 		}
 		resp.getWriter().print(train.toJSON().toString());
@@ -88,25 +86,25 @@ public class AddTraining extends HttpServlet{
 
 
 
-	public Key addExercice(Exercice exercice,Key TrainingKey){
+	public void addExercice(Exercice exercice,Long trainingId){
 
 		Entity DescriptionHome = new Entity("Exercice");
 		DescriptionHome.setProperty("title", exercice.getTitle());
 		DescriptionHome.setProperty("description",exercice.getDescription());
 		DescriptionHome.setProperty("time",exercice.getTime());
-		DescriptionHome.setProperty("training",TrainingKey);
+		DescriptionHome.setProperty("training",trainingId);
 
 		datastore.put(DescriptionHome);
-		return DescriptionHome.getKey();
 	}
-	public Key addTraining(Training training){
+	public long addTraining(Training training){
 
 		Entity DescriptionHome = new Entity("Training");
 		DescriptionHome.setProperty("title", training.getTitle());
 		DescriptionHome.setProperty("description",training.getDescription());
 		DescriptionHome.setProperty("domaine", training.getDomaine());
+		DescriptionHome.setProperty("time", training.getTime());
 		datastore.put(DescriptionHome);
-		return DescriptionHome.getKey();
+		return DescriptionHome.getKey().getId();
 	}
 
 }
