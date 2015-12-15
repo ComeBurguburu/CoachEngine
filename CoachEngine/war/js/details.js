@@ -46,11 +46,13 @@ function setFlip(index, value){
 
 var userExerciceData = {
 		date: new Date(),
-		idUser: idUser,
+		idUser: userId,
 		planTitle: "",
 		exerciceTitle: getTitle(index),
 		status: "success"
 };
+$.post("/personalData",{userExerciceData:userExerciceData});
+
 console.log(userExerciceData);
 $("#validate").click(function(){
 	alert("entraine toi");

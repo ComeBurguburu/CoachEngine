@@ -11,7 +11,7 @@ $.get("/login",function(data){
 		$(".name").html(json.login);
 	    $(".pict").prop("src",json.picture);
 	    $(".email").html(json.email);
-	    idUser = json.id;
+	    userId = json.id;
 	}
 	
 	
