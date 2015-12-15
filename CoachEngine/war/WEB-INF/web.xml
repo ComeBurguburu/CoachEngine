@@ -52,6 +52,10 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	    <servlet-name>Search</servlet-name>
 	    <url-pattern>/search</url-pattern>
 	</servlet-mapping>
+	<servlet-mapping>
+	    <servlet-name>PersonalData</servlet-name>
+	    <url-pattern>/personalData</url-pattern>
+	</servlet-mapping>
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>
 	</welcome-file-list>
