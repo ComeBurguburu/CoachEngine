@@ -6,6 +6,7 @@ $.get("/addtraining",function(response){
 	var block = $("tr:eq(0)").clone();
 	$.each(json.Exercice, function(key, value){
 		setTitle(index, value.Title);
+<<<<<<< Updated upstream
 		setTime(index, value.Date);
 		setDescription(index,value.Description);
 		setFlip(index,value.Date);
@@ -13,6 +14,15 @@ $.get("/addtraining",function(response){
 		
 		if(index < json.Exercice.length){
 			$("table").append(block.clone());
+=======
+	//	setTime(index, value.Time);
+		setDescription(index,value.Description);
+		setFlip(index,value.Time);
+		alert(value.Time);
+		index++;
+		if(index < json.Exercice.length - 1){
+			$("table").append($("tr:eq(0)").clone());
+>>>>>>> Stashed changes
 		}
 	});
 	
@@ -42,6 +52,7 @@ function setFlip(index, value){
              	date=new Date(currentTime);
              return date;
          }});
+<<<<<<< Updated upstream
 }
 
 var userExerciceData = {
@@ -57,3 +68,6 @@ console.log(userExerciceData);
 $("#validate").click(function(){
 	alert("entraine toi");
 });
+=======
+}
+>>>>>>> Stashed changes
