@@ -10,7 +10,7 @@ $.get("/addtraining",function(response){
 		setDescription(index,value.Description);
 		setFlip(index,value.Date);
 		index++;
-		if(index < json.Exercice.length - 1){
+		if(index < json.Exercice.length){
 			$("table").append(block.clone());
 		}
 	});
@@ -34,25 +34,49 @@ function setFlip(index, value){
 	var elem = $(".flip").eq(index);
 	var date=new Date('5.10.2012 '+value);
 	var  time=date.getTime();
-
+	$(elem).parents("tr").find(".pause").click(function(){
+		
+		$(this).parents("tr").find(".flip").data("start","false")
+	})
+	$(elem).parents("tr").find(".start").click(function(){
+		$(this).parents("tr").find(".flip").data("start","true")
+	})
+	
     $(elem).flipcountdown({speedFlip:60,tick:function(){
-             var currentTime=time-1000;
+   		
+    		var sec = $(this).data("time")==undefined?0:parseInt($(this).data("time"),10);
+             var currentTime;
+             
+    		if($(this).data("start")!=="true"){
+    			currentTime=time-1000;
+    			sec++;
+    		}else{
+    			currentTime = time;
+    		}
              	time=currentTime;
              	date=new Date(currentTime);
+             	$(elem).data("time",sec);
              return date;
          }});
 }
 
-var userExerciceData = {
-		date: new Date(),
-		//idUser: userId,
-		planTitle: "",
-		exerciceTitle: getTitle(0),
-		status: "success"
-};
-$.post("/personalData",{userExerciceData:JSON.stringify(userExerciceData)});
 
-console.log(userExerciceData);
-$("#validate").click(function(){
+
+
+$(".validate").click(function(){
 	alert("entraine toi");
+	
+		var t = $(this).parents("tr").find(".flip").text();
+		alert(t);
+		
+	
+	var userExerciceData = {
+			date: new Date(),
+			idUser: 0,
+			planTitle: "",
+			exerciceTitle: getTitle(0),
+			status: "success"
+	};
+	console.log(userExerciceData);
+	$.post("/personalData",{userExerciceData:JSON.stringify(userExerciceData)});
 });
