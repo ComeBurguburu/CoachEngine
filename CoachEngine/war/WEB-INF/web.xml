@@ -32,6 +32,10 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	    <servlet-name>Search</servlet-name>
 	    <servlet-class>charbon_burguburu.Search</servlet-class>
 	</servlet>
+	<servlet>
+	    <servlet-name>PersonalData</servlet-name>
+	    <servlet-class>charbon_burguburu.PersonalData</servlet-class>
+	</servlet>
 	<servlet-mapping>
 	    <servlet-name>Success</servlet-name>
 	    <url-pattern>/success</url-pattern>

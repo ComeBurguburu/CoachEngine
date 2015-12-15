@@ -23,7 +23,9 @@ public class PersonalData extends HttpServlet{
 		JSONObject userExerciceDataObject;
 		try {
 			userExerciceDataObject = new JSONObject(userExerciceData);
-		
+			System.out.println(userExerciceData);
+			userExerciceDataEntity = new Entity("userExerciceDataEntity");
+			
 			userExerciceDataEntity.setProperty("date", userExerciceDataObject.getString("date"));
 			userExerciceDataEntity.setProperty("idUser",userExerciceDataObject.getString("idUser"));
 			userExerciceDataEntity.setProperty("planTitle", userExerciceDataObject.getString("planTitle"));
@@ -36,5 +38,8 @@ public class PersonalData extends HttpServlet{
 		
 		datastore.put(userExerciceDataEntity);
 
+	}
+	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+	
 	}
 }

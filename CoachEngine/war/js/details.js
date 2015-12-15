@@ -45,12 +45,12 @@ function setFlip(index, value){
 
 var userExerciceData = {
 		date: new Date(),
-		idUser: userId,
+		
 		planTitle: "",
-		exerciceTitle: getTitle(index),
+		exerciceTitle: getTitle(0),
 		status: "success"
 };
-$.post("/personalData",{userExerciceData:userExerciceData});
+$.post("/personalData",{userExerciceData:JSON.stringify(userExerciceData)});
 
 console.log(userExerciceData);
 $("#validate").click(function(){
