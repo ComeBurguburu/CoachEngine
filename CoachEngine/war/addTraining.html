@@ -45,14 +45,14 @@
 	</nav>
 	<!-- ------------------------------------------- HEADER ZONE END ------------------------------------------- -->
 
-	<form role="form">
+	<!--<form role="form">-->
 		<div class="row" style="margin-bottom: 10px">
 			<div class=" col-md-1 col-sm-0 col-xs-0 "></div>
 			<div class=" col-md-2 col-sm-2 col-xs-12 ">
 				<label for="inputTitle">Title</label>
 			</div>
 			<div class=" col-md-6 col-sm-6 col-xs-12 ">
-				<input type="email" class="form-control" id="inputTitle"
+				<input type="text" class="form-control" id="inputTitle"
 					placeholder="Enter your Training plan title">
 			</div>
 			<div class=" col-md-3 col-sm-4 hidden-xs">
@@ -108,16 +108,16 @@
 							<label for="titleDescription">Ex. Title</label>
 						</div>
 						<div class=" col-md-6 col-sm-6 col-xs-12 ">
-							<input type="email" class="form-control" id="titleDescription"
+							<input type="text" class="form-control" id="titleDescription"
 								placeholder="Enter your exercice title">
 						</div>
 						<div class=" col-md-2 col-sm-4 col-xs-12 ">
 							<div class="input-group">
-								<input id = "hours" type="text" class="form-control" placeholder="h"> 
+								<input id = "hours" type="number" class="form-control" placeholder="h"> 
 								<span  class="input-group-addon" style="padding: 0px">:</span> 
-								<input id = "minutes" type="text" class="form-control" placeholder="m"> 
+								<input id = "minutes" type="number" class="form-control" placeholder="m"> 
 								<span class="input-group-addon" style="padding: 0px">:</span> 
-								<input id = "seconds" type="text" class="form-control" placeholder="s">
+								<input id = "seconds" type="number" class="form-control" placeholder="s">
 
 							</div>
 						</div>
@@ -128,7 +128,7 @@
 							<label for="exerciceDescription">Ex. Description</label>
 						</div>
 						<div class=" col-md-6 col-sm-6 col-xs-12 ">
-							<!--<input type="email" class="form-control" id="exerciceDescription" placeholder="Enter your exercice title">-->
+							
 							<textarea id="exerciceDescription" class="form-control" rows="4"></textarea>
 						</div>
 						<div class=" col-md-2 col-sm-4 hidden-xs">
@@ -142,8 +142,8 @@
 		</div>
 
 		<div class=" col-md-1 col-sm-0 col-xs-0 "></div>
-		<div class=" col-md-9 col-sm-12 col-xs-12 ">
-			<table class="table table-striped table-condensed">
+		<div  class=" col-md-9 col-sm-12 col-xs-12 ">
+			<table id="listExercices" class="table table-striped table-condensed">
 				<tr>
 					<td>1</td>
 					<td>Warm Up</td>
@@ -199,13 +199,13 @@
 			<button type="submit" class="btn btn-danger btn-sm">
 				<span class="glyphicon glyphicon-remove"></span>
 			</button>
-			<button type="submit" class="btn btn-success btn-lg">
+			<button id="validate" class="btn btn-success btn-lg">
 				<span class="glyphicon glyphicon-ok"></span>
 			</button>
 		</div>
 
 
-	</form>
+	<!--  </form>-->
 
 
 
