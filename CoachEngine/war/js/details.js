@@ -66,10 +66,7 @@ function getDuration(index){
 }
 
 $(".validate").click(function(){
-	alert("entraine toi");
-	
-		var t = $(this).parents("tr").find(".flip").text();
-		alert(t);
+		
 		
 	
 	var userExerciceData = {
@@ -77,6 +74,7 @@ $(".validate").click(function(){
 			idUser: 0,
 			planTitle: "",
 			exerciceTitle: getTitle(0),
+			duration: getDuration($(this).index()),
 			status: "success"
 	};
 	console.log(userExerciceData);
