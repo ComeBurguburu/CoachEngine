@@ -1,6 +1,6 @@
 var exemple={"Date": "12/04/15", "idUser": 23, "planTitle": "Apprendre Volley", "exTitle": "lancer ball", "Status": "Success"};
 
-
+$.get("/personalData",function(data){alert("Data: "+data);});
 if(exemple.Status=="Success"){
 	completed="Yes";
 }

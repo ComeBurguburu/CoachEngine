@@ -9,8 +9,11 @@ import javax.servlet.http.HttpServletResponse;
 import com.google.appengine.api.datastore.DatastoreService;
 import com.google.appengine.api.datastore.DatastoreServiceFactory;
 import com.google.appengine.api.datastore.Entity;
+import com.google.appengine.api.datastore.PreparedQuery;
+import com.google.appengine.api.datastore.Query;
 import com.google.appengine.labs.repackaged.org.json.JSONException;
 import com.google.appengine.labs.repackaged.org.json.JSONObject;
+
 
 public class PersonalData extends HttpServlet{
 	
@@ -20,6 +23,7 @@ public class PersonalData extends HttpServlet{
 	public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 	
 		String userExerciceData = req.getParameter("userExerciceData");
+		System.out.println(userExerciceData);
 		JSONObject userExerciceDataObject;
 		try {
 			userExerciceDataObject = new JSONObject(userExerciceData);
@@ -40,6 +44,36 @@ public class PersonalData extends HttpServlet{
 
 	}
 	public void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-	
+		
+		Query q = new Query("userExerciceDataEntity");
+		System.out.println("On est dans le get");
+		// Récupération du résultat de la requète à l’aide de PreparedQuery
+		PreparedQuery pq = datastore.prepare(q);
+		 
+		for (Entity result : pq.asIterable()) {
+			System.out.println("On est dans le for");
+			 String date = (String) result.getProperty("date");
+			 String idUser = (String) result.getProperty("idUser");
+			 String planTitle = (String) result.getProperty("planTitle");
+			 String exerciceTitle = (String) result.getProperty("exerciceTitle");
+			 String status = (String) result.getProperty("status");
+			 JSONObject  userExerciceData = new JSONObject();
+			 try {
+				 System.out.println("On est dans le try");
+				 userExerciceData.put("date", date);
+				 userExerciceData.put("idUser", idUser);
+				 userExerciceData.put("planTitle", planTitle);
+				 userExerciceData.put("exerciceTitle", exerciceTitle);
+				 userExerciceData.put("status", status);	
+			} catch (JSONException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			  
+			 resp.getWriter().print(userExerciceData.toString());
+			 break;
+		}
+		
+		
 	}
 }
