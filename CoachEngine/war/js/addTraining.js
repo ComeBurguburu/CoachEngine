@@ -10,7 +10,7 @@ $("#validate").click(function() {
 	tab.Title=$("#inputTitle").val();
 	tab.Description=$("#inputDescription").val();
 	tab.Domain=$("#e1").val();
-	tab.Date = DateOKLM;
+	tab.Date = DateOKLM.toHHMMSS();
 
 	$.post("/addtraining",{training: JSON.stringify(tab)},function(response){alert(response);});
 	console.log("after ajax call")
