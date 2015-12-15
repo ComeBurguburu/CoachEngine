@@ -17,15 +17,15 @@ public class Training {
 	public Training(JSONObject json){
 		
 		try {
-			this.title=json.getString("title");
-			this.description = json.getString("description");
-			this.domaine=json.getString("domaine");
+			this.title=json.getString("Title");
+			this.description = json.getString("Description");
+			this.domaine=json.getString("Domain");
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		try {
-			JSONArray jsonArray = json.getJSONArray("exercice");
+			JSONArray jsonArray = json.getJSONArray("Exercice");
 			if (jsonArray != null) { 
 				int len = jsonArray.length();
 				this.exercices = new ArrayList<Exercice>();
@@ -52,11 +52,11 @@ public class Training {
 	public JSONObject toJSON(){
 		JSONObject o = new JSONObject();
 		try {
-			o.put("title",title);
-			o.put("description",description);
-			o.put("domaine",domaine);
-			o.put("time", time);
-			o.put("exercices", this.getJSONArray());
+			o.put("Title",title);
+			o.put("Description",description);
+			o.put("Domaine",domaine);
+			o.put("Time", time);
+			o.put("Exercice", this.getJSONArray());
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

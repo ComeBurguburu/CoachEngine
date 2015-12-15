@@ -10,8 +10,8 @@ $("#validate").click(function() {
 	tab.Description=$("#inputDescription").val();
 	tab.Domain=$("#e1").val();
 	tab.Date = DateOKLM;
-	console.log(tab.Date);
-	$.post("/addtraining",{training: tab});
+	$.post("/addtraining",{training: JSON.stringify(tab)},function(response){alert(response);});
+	console.log("after ajax call")
 	
 });
 
@@ -38,6 +38,7 @@ $("#buttonAddEx").click(function() {
 	currentExo.Minutes=$("#minutes").val();
 	currentExo.Seconds=$("#seconds").val();
 	
+	console.log(currentExo);
 	
 	DateTmp=parseInt(currentExo.Hours,10)*3600+parseInt(currentExo.Minutes,10)*60+parseInt(currentExo.Seconds,10)
 	DateOKLM=DateOKLM+DateTmp;
@@ -57,10 +58,10 @@ $("#buttonAddEx").click(function() {
 	tab.Exercice.push(currentExo);
 	console.log(tab.Exercice[0]);
 	
-	currentExo.Title=$("#titleDescription").val("");
-	currentExo.Description=$("#exerciceDescription").val("");
-	currentExo.Hours=$("#hours").val("");
-	currentExo.Minutes=$("#minutes").val("");
-	currentExo.Seconds=$("#seconds").val("");
+	$("#titleDescription").val("");
+	$("#exerciceDescription").val("");
+	$("#hours").val("");
+	$("#minutes").val("");
+	$("#seconds").val("");
 	
 });

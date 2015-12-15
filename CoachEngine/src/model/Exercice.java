@@ -1,7 +1,5 @@
 package model;
 
-import java.util.Collection;
-
 import com.google.appengine.labs.repackaged.org.json.JSONException;
 import com.google.appengine.labs.repackaged.org.json.JSONObject;
 
@@ -12,9 +10,9 @@ public class Exercice {
 
 	public Exercice(JSONObject json){
 		try {
-			this.title=json.getString("title");
-			this.description = json.getString("description");
-			this.time = json.getLong("time");
+			this.title=json.getString("Title");
+			this.description = json.getString("Description");
+			//this.time = json.getLong("Date");
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -49,10 +47,10 @@ public class Exercice {
 	public JSONObject toJSON() {
 		JSONObject o = new JSONObject();
 		try {
-			o.put("title", title);
+			o.put("Title", title);
 
-			o.put("description", description);
-			o.put("time", time);
+			o.put("Description", description);
+			o.put("Time", time);
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

@@ -17,7 +17,6 @@ import com.google.appengine.api.datastore.Entity;
 import com.google.appengine.api.datastore.Key;
 import com.google.appengine.api.datastore.PreparedQuery;
 import com.google.appengine.api.datastore.Query;
-import com.google.appengine.labs.repackaged.org.json.JSONArray;
 import com.google.appengine.labs.repackaged.org.json.JSONException;
 import com.google.appengine.labs.repackaged.org.json.JSONObject;
 
@@ -33,6 +32,11 @@ public class AddTraining extends HttpServlet{
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String training = req.getParameter("training");
+		System.out.println("doPost add Training");
+		System.out.println(req.getParameterMap());
+		System.out.println(training);
+		
+		
 		try {
 			JSONObject json_training = new JSONObject(training);
 			Training t=new Training(json_training);
@@ -61,7 +65,7 @@ public class AddTraining extends HttpServlet{
 		//q.addFilter("ID/Name", Query.FilterOperator.EQUAL, trainingkey);
 		// Récupération du résultat de la requète à l’aide de PreparedQuery
 		PreparedQuery pq = datastore.prepare(q);
-		Training train = null;
+		Training train = new Training();
 		
 		for (Entity result : pq.asIterable()) {
 		 String title = (String) result.getProperty("title");
