@@ -11,6 +11,7 @@ import com.google.appengine.api.datastore.DatastoreServiceFactory;
 import com.google.appengine.api.datastore.Entity;
 import com.google.appengine.api.datastore.PreparedQuery;
 import com.google.appengine.api.datastore.Query;
+import com.google.appengine.labs.repackaged.org.json.JSONArray;
 import com.google.appengine.labs.repackaged.org.json.JSONException;
 import com.google.appengine.labs.repackaged.org.json.JSONObject;
 
@@ -35,6 +36,8 @@ public class PersonalData extends HttpServlet{
 			userExerciceDataEntity.setProperty("planTitle", userExerciceDataObject.getString("planTitle"));
 			userExerciceDataEntity.setProperty("exerciceTitle", userExerciceDataObject.getString("exerciceTitle"));
 			userExerciceDataEntity.setProperty("status", userExerciceDataObject.getString("status"));
+			userExerciceDataEntity.setProperty("duration", userExerciceDataObject.getString("duration"));
+			userExerciceDataEntity.setProperty("timeExpected", userExerciceDataObject.getString("timeExpected"));
 		}catch (JSONException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -49,7 +52,7 @@ public class PersonalData extends HttpServlet{
 		System.out.println("On est dans le get");
 		// Récupération du résultat de la requète à l’aide de PreparedQuery
 		PreparedQuery pq = datastore.prepare(q);
-		 
+		JSONArray Tab= new JSONArray();
 		for (Entity result : pq.asIterable()) {
 			System.out.println("On est dans le for");
 			 String date = (String) result.getProperty("date");
@@ -57,6 +60,8 @@ public class PersonalData extends HttpServlet{
 			 String planTitle = (String) result.getProperty("planTitle");
 			 String exerciceTitle = (String) result.getProperty("exerciceTitle");
 			 String status = (String) result.getProperty("status");
+			 String duration = (String) result.getProperty("duration");
+			 String timeExpected = (String) result.getProperty("timeExpected");
 			 JSONObject  userExerciceData = new JSONObject();
 			 try {
 				 System.out.println("On est dans le try");
@@ -64,16 +69,18 @@ public class PersonalData extends HttpServlet{
 				 userExerciceData.put("idUser", idUser);
 				 userExerciceData.put("planTitle", planTitle);
 				 userExerciceData.put("exerciceTitle", exerciceTitle);
-				 userExerciceData.put("status", status);	
+				 userExerciceData.put("status", status);
+				 userExerciceData.put("duration", duration);
+				 userExerciceData.put("timeExpected", timeExpected);
 			} catch (JSONException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			  
-			 resp.getWriter().print(userExerciceData.toString());
-			 break;
+			 Tab.put(userExerciceData);
+			 
+			
 		}
-		
+		resp.getWriter().print(Tab.toString());
 		
 	}
 }
