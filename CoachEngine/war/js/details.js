@@ -33,6 +33,7 @@ function setFlip(index, value){
 	console.assert(value!=undefined);
 	var elem = $(".flip").eq(index);
 	var date=new Date('5.10.2012 '+value);
+	$(elem).data("begin",value);
 	var  time=date.getTime();
 	$(elem).parents("tr").find(".pause").click(function(){
 		
@@ -41,6 +42,20 @@ function setFlip(index, value){
 	$(elem).parents("tr").find(".play").click(function(){
 		$(this).parents("tr").find(".flip").data("start","true")
 	})
+	$(elem).parents("tr").find(".stop").click(function(){
+		var a = $(this).parents("tr").find(".flip")
+		$(a).data("start","false");
+		$(a).data("time",$(a).data("begin"));
+		date=new Date('5.10.2012 '+$(a).data("begin"));
+		time = date.getTime();
+	})
+	$(elem).parents("tr").find(".repeat").click(function(){
+		var a = $(this).parents("tr").find(".flip")
+		$(a).data("start","true");
+		$(a).data("time",$(a).data("begin"));
+		date=new Date('5.10.2012 '+$(a).data("begin"));
+		time = date.getTime();
+	});	
 	
     $(elem).flipcountdown({speedFlip:60,tick:function(){
    		
@@ -64,6 +79,15 @@ function setFlip(index, value){
 function getDuration(index){
 	return parseInt($(".flip").eq(index).data("time"),10);
 }
+function getBegin(index){
+	return parseInt($(".flip").eq(index).data("begin"),10);
+}
+function getTimeExpected(index){
+	return getBegin(index);
+}
+function isSuccess(index){
+	return $(".row").eq(index).find(".success").prop("checked");
+}
 
 $(".validate").click(function(){
 		
@@ -71,11 +95,12 @@ $(".validate").click(function(){
 	
 	var userExerciceData = {
 			date: new Date(),
-			idUser: 0,
+			idUser: userId,
 			planTitle: "",
 			exerciceTitle: getTitle(0),
 			duration: getDuration($(this).index()),
-			status: "success"
+			timeExpected: getTimeExpected($(this).index()),
+			status: isSuccess($(this).index())?"success":"failure"
 	};
 	console.log(userExerciceData);
 	$.post("/personalData",{userExerciceData:JSON.stringify(userExerciceData)});

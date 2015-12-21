@@ -1,4 +1,5 @@
 //display login information on the top page
+var userId = 0;
 $.get("/login",function(data){
 	try{
 		var json = JSON.parse(data);
@@ -12,6 +13,7 @@ $.get("/login",function(data){
 	    $(".pict").prop("src",json.picture);
 	    $(".email").html(json.email);
 	    userId = json.id;
+	    console.info("ready");
 	}
 	
 	

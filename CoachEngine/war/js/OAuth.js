@@ -1,4 +1,5 @@
 "use strict";
+var userId;
 function hash() {
     var obj = {};
    $(location).prop("hash").slice(1).split("&").forEach(function (param) {var tab = param.split("="); if (tab.length === 2) {if (obj[tab[0]] === undefined) {obj[tab[0]] = tab[1]; } else {if (typeof obj[tab[0]] !== "object") {obj[tab[0]] = [obj[tab[0]]]; obj[tab[0]].push(tab[1]); } } } });
@@ -24,7 +25,7 @@ $.ajax({
     $(".pict").prop("src",picture);
     $(".email").html(email);
     userId = userInfo.id;
-    $.post("/login",{login:login,email:email,picture:picture});
+    $.post("/login",{login:login,email:email,picture:picture,id:userId});
   },
   error: function(e) {
     console.log('error');

@@ -26,7 +26,7 @@ public class Login extends HttpServlet{
 			String email =req.getParameter("email");
 			String picture =req.getParameter("picture");
 			String id = req.getParameter("id");
-			
+						
 			CacheFactory cacheFactory = null;
 			Cache cache = null;
 			Map props = new HashMap();
@@ -65,9 +65,6 @@ public class Login extends HttpServlet{
 		} catch (CacheException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-			
-				
-			
 			resp.getWriter().write(json_object.toString());
 			return;
 		}
