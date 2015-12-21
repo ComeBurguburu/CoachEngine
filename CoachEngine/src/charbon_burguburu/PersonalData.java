@@ -21,7 +21,7 @@ public class PersonalData extends HttpServlet{
 	private DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 	Entity userExerciceDataEntity = null;
 	public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
-	
+		System.out.println("On est dans le POST");
 		String userExerciceData = req.getParameter("userExerciceData");
 		System.out.println(userExerciceData);
 		JSONObject userExerciceDataObject;
