@@ -1,72 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Bootstrap 101 Template</title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>CoachEngine | Personal Data</title>
 
-<!-- Bootstrap -->
-<link href="css/bootstrap.min.css" rel="stylesheet">
-<link href="lib/select2-3.5.1/select2.css" rel="stylesheet">
+	<!-- Bootstrap -->
+	<link href="css/bootstrap.min.css" rel="stylesheet">
+	<link href="lib/select2-3.5.1/select2.css" rel="stylesheet">
 
-<link href="css/js.css" rel="stylesheet">
 
 
 </head>
+
 <body>
 
-	<!-- ------------------------------------------- HEADER ZONE ------------------------------------------- -->
-	<nav class="navbar navbar-inverse" role="navigation">
+	<!--                                HEADER ZONE                                -->
+	<nav class="navbar navbar-inverse">
 		<div class=" col-md-10 col-sm-10 col-xs-10 ">
-			<form class="navbar-form navbar-left" style="width: 100%"
-				role="search">
-				<button type="submit" class="btn btn-link "
-					style="margin: 0px, padding:0px">
+			<form class="navbar-form navbar-left" style="width: 100%">
+				<a href="index.html" class="btn btn-link " style="margin: 0px, padding:0px">
 					<span class="glyphicon glyphicon-arrow-left "></span>
-				</button>
-				<label>
-					<h5 style="color: white">Personal Data</h5>
-				</label>
+				</a>
+				<span style="color: white">Personal Data</span>
 			</form>
 		</div>
 
 		<div class=" col-md-2 col-sm-2 col-xs-2 ">
 			<div class="connectGoogle">
-					<div class="row">
-						<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-							<span class="white name"></span>
-							<span class="white email"></span>
-						</div>
-						<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
-							<img src="" class="pict">
-						</div>
+				<div class="row">
+					<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+						<span style="color: white" class="name"></span>
+						<span style="color: white" class="email"></span>
+					</div>
+					<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
+						<img src="images/account.png" alt="picture" class="pict">
 					</div>
 				</div>
+			</div>
 		</div>
 	</nav>
-	<center>
-	<table id="personalDataTable">
-	<tr>
-	<td style="border: 3px solid black; padding: 5%;"> Date</td>
-	<td style="border: 3px solid black; padding: 5%;"> Training Exercice</td>
-	<td style="border: 3px solid black; padding: 5%;"> expected</td>
-	<td style="border: 3px solid black; padding: 5%;"> Time</td>
-	<td style="border: 3px solid black; padding: 5%;"> completed</td>
-	</tr>
-	
-	</table>
-	</center>
-	
-	
+	<div class="center-block" style="width: 800px;">
+		<table id="personalDataTable" class="table-responsive">
+			<tr>
+				<td style="border: 3px solid black; padding: 5%;"> Date</td>
+				<td style="border: 3px solid black; padding: 5%;"> Training Exercice</td>
+				<td style="border: 3px solid black; padding: 5%;"> expected</td>
+				<td style="border: 3px solid black; padding: 5%;"> Time</td>
+				<td style="border: 3px solid black; padding: 5%;"> completed</td>
+			</tr>
+		</table>
+	</div>
+	<!--                                FOOTER ZONE                                -->
+	<div style="height: 50px"></div>
+	<nav class="navbar navbar-inverse navbar-fixed-bottom">
+		<div class="col-md-10 col-sm-10 col-xs-10">
+
+			<ul class="list-inline">
+				<li><a class="btn btn-default" href="index.html"><span class="glyphicon glyphicon-home"></span></a></li>
+				<li><a href="search.html" class="btn btn-warning"><span class="glyphicon glyphicon-search"></span> search</a> </li>
+				<li><a href="addTraining.html" class="btn btn-danger"><span class="glyphicon glyphicon-plus-sign"></span> add training</a>
+				</li>
+				<li><a href="result-detail-screen.html" class="btn btn-primary"><span class="glyphicon glyphicon-user"> result-detail-</span>screen</a></li>
+				<li><a href="personalData.html" class="btn btn-success"><span class="glyphicon glyphicon-stats"></span> personal data</a></li>
+				<li><span class="text-info">&copy; Côme BURGUBURU , Hugues CHARBON</span></li>
+			</ul>
+		</div>
+	</nav>
+	<!--                                FOOTER ZONE END                                -->
+
 	<script src="js/jquery-1.11.1.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>
-	
 	<script src="js/login.js"></script>
 	<script src="lib/select2-3.5.1/select2.min.js"></script>
-	
+	<script src="js/login.js"></script>
 	<script src="js/personalData.js"></script>
-	</body>	
-</html>
+</body>
 
-	
+</html>

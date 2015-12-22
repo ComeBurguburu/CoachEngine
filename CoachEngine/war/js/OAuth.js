@@ -21,9 +21,9 @@ $.ajax({
     var login = userInfo.displayName;
     var email = userInfo.emails[0].value;
     var picture = userInfo.image.url;
-    $(".name").html(login);
+    $(".name").text(login);
     $(".pict").prop("src",picture);
-    $(".email").html(email);
+    $(".email").text(email);
     userId = userInfo.id;
     $.post("/login",{login:login,email:email,picture:picture,id:userId});
   },

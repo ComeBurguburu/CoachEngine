@@ -82,8 +82,8 @@ public class Login extends HttpServlet{
 		}catch(Exception e){
 			e.printStackTrace();
 		}
+        resp.setCharacterEncoding("UTF-8"); 
 		resp.getWriter().print(json_object.toString());
-		
 		
 	}
 	
