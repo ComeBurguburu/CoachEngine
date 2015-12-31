@@ -3,14 +3,30 @@ var tab = {};
 tab.Exercice = [];
 var currentDate = 0;
 
+$(".alert").hide();
+
 $("#validate").click(function () {
 	tab.Title = $("#inputTitle").val();
 	tab.Description = $("#inputDescription").val();
 	tab.Domain = $("#e1").val();
 	tab.Date = currentDate.toHHMMSS();
-
+	
+	if(tab.Title==="" || tab.Description === ""){
+		$(".alert-warning").text("Title and Description are required").show();
+		$(".alert-success").text("").hide();
+		return;
+	}
+	if(tab.Exercice.length==0){
+		$(".alert-warning").text("At least one exercice is required").show();
+		$(".alert-success").text("").hide();
+		return;
+	}
+	
 	$.post("/addtraining", {
 		training: JSON.stringify(tab)
+	},function(){
+		$(".alert-warning").text("").hide();
+		$(".alert-success").text("Training Plan saved").show();
 	});
 
 

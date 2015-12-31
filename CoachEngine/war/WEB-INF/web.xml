@@ -17,6 +17,10 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	    <servlet-class>charbon_burguburu.AddTraining</servlet-class>
 	</servlet>
 	<servlet>
+	    <servlet-name>AddTrainingQueue</servlet-name>
+	    <servlet-class>charbon_burguburu.AddTrainingQueue</servlet-class>
+	</servlet>
+	<servlet>
 	    <servlet-name>Search</servlet-name>
 	    <servlet-class>charbon_burguburu.Search</servlet-class>
 	</servlet>
@@ -35,6 +39,10 @@ http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" version="2.5">
 	<servlet-mapping>
 	    <servlet-name>AddTraining</servlet-name>
 	    <url-pattern>/addtraining</url-pattern>
+	</servlet-mapping>
+	<servlet-mapping>
+	    <servlet-name>AddTrainingQueue</servlet-name>
+	    <url-pattern>/addtrainingqueue</url-pattern>
 	</servlet-mapping>
 	<servlet-mapping>
 	    <servlet-name>Search</servlet-name>

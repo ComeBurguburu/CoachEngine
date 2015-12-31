@@ -21,14 +21,14 @@
 	<nav class="navbar navbar-inverse">
 		<div class=" col-md-10 col-sm-10 col-xs-10 ">
 			<form class="navbar-form navbar-left" style="width: 100%">
-				<a href="index.html" class="btn btn-link " style="margin: 0px, padding:0px">
+				<a href="search.html" class="btn btn-link" style="margin: 0px, padding:0px">
 					<span class="glyphicon glyphicon-arrow-left "></span>
 				</a>
 				<span style="color: white">Personal Data</span>
 			</form>
 		</div>
 
-		<div class=" col-md-2 col-sm-2 col-xs-2 ">
+		<div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
 			<div class="connectGoogle">
 				<div class="row">
 					<div class="col-xs-6 col-sm-6 col-md-6 col-lg-6">
@@ -42,34 +42,48 @@
 			</div>
 		</div>
 	</nav>
-	<div class="center-block" style="width: 800px;">
-		<table id="personalDataTable" class="table-responsive">
+	<div class="center-block container">
+		<table id="personalDataTable" class="table table-bordered table-responsive">
 			<tr>
-				<td style="border: 3px solid black; padding: 5%;"> Date</td>
-				<td style="border: 3px solid black; padding: 5%;"> Training Exercice</td>
-				<td style="border: 3px solid black; padding: 5%;"> expected</td>
-				<td style="border: 3px solid black; padding: 5%;"> Time</td>
-				<td style="border: 3px solid black; padding: 5%;"> completed</td>
+				<th>Date</th>
+				<th> Training Exercice</th>
+				<th> expected</th>
+				<th> Time</th>
+				<th> completed</th>
 			</tr>
 		</table>
 	</div>
-	<!--                                FOOTER ZONE                                -->
+	<!--                                   FOOTER ZONE                                   -->
 	<div style="height: 50px"></div>
-	<nav class="navbar navbar-inverse navbar-fixed-bottom">
-		<div class="col-md-10 col-sm-10 col-xs-10">
+	<nav class="navbar navbar-default navbar-fixed-bottom">
+		<div class="container">
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand visible-xs" href="#">Menu</a>
+			</div>
+			<div id="navbar" class="navbar-collapse collapse">
+				<ul class="nav navbar-nav">
+					<li><a class="btn btn-default" href="index.html"><span class="glyphicon glyphicon-home"></span></a></li>
+					<li><a href="search.html" class="btn btn-warning"><span class="glyphicon glyphicon-search"></span> search</a> </li>
+					<li><a href="addTraining.html" class="btn btn-danger"><span class="glyphicon glyphicon-plus-sign"></span> add training</a>
+					</li>
+					<li><a href="result-detail-screen.html" class="btn btn-primary"><span class="glyphicon glyphicon-user"> result-detail-</span>screen</a></li>
+					<li><a href="personalData.html" class="btn btn-success"><span class="glyphicon glyphicon-stats"></span> personal data</a></li>
+					<li><span class="text-info">&copy; Côme BURGUBURU , Hugues CHARBON</span></li>
 
-			<ul class="list-inline">
-				<li><a class="btn btn-default" href="index.html"><span class="glyphicon glyphicon-home"></span></a></li>
-				<li><a href="search.html" class="btn btn-warning"><span class="glyphicon glyphicon-search"></span> search</a> </li>
-				<li><a href="addTraining.html" class="btn btn-danger"><span class="glyphicon glyphicon-plus-sign"></span> add training</a>
-				</li>
-				<li><a href="result-detail-screen.html" class="btn btn-primary"><span class="glyphicon glyphicon-user"> result-detail-</span>screen</a></li>
-				<li><a href="personalData.html" class="btn btn-success"><span class="glyphicon glyphicon-stats"></span> personal data</a></li>
-				<li><span class="text-info">&copy; Côme BURGUBURU , Hugues CHARBON</span></li>
-			</ul>
+				</ul>
+
+			</div>
+			<!--/.nav-collapse -->
 		</div>
 	</nav>
-	<!--                                FOOTER ZONE END                                -->
+
+	<!--                                   FOOTER ZONE END                                   -->
 
 	<script src="js/jquery-1.11.1.min.js"></script>
 	<script src="js/bootstrap.min.js"></script>

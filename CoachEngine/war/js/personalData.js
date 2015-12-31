@@ -6,7 +6,7 @@ $.get("/personalData", function (resp) {
 	for (i = 0; i < data.length; i++) {
 		completed = data[i].Status == "Success" ? "Yes" : "No";
 
-		var Html = "<tr><td style='border: 3px solid black; padding: 5%;'>" + data[i].date + "</td><td style='border: 3px solid black; padding: 5%;'>" + data[i].exerciceTitle + "</td><td style='border: 3px solid black; padding: 5%;'> " + data[i].timeExpected + "</td><td style='border: 3px solid black; padding: 5%;'>" + data[i].duration + "</td><td style='border: 3px solid black; padding: 5%;'>" + completed + "</td>";
+		var Html = "<tr><td>" + data[i].date + "</td><td>" + data[i].exerciceTitle + "</td><td> " + data[i].timeExpected + "</td><td>" + data[i].duration + "</td><td>" + completed + "</td></tr>";
 		$("#personalDataTable").append(Html);
 	}
 });

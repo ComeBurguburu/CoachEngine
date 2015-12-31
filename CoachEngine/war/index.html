@@ -8,22 +8,26 @@
 </head>
 
 <body>
-	<a href="search.html">
-		<div class="container">
-			<div class="jumbotron">
+
+	<div class="container">
+		<div class="jumbotron">
+			<a href="search.html">
 				<div class="row">
 					<div class="col-xs-3 col-sm-3 col-md-3 col-lg-3"><img alt="account" src="images/account.png" /></div>
 					<div class="col-xs-9 col-sm-9 col-md-9 col-lg-9">
 						<h2>Personal Trainer</h2></div>
 				</div>
-				<div class="row" id="description"></div>
-			</div>
+			</a>
+			<div class="row" id="description"></div>
 		</div>
-	</a>
+	</div>
+
 	<script src="js/jquery-1.11.1.min.js"></script>
-	
+
 	<script>
-	$.get("/descriptioncache",function(response){$("#description").html(response);});
+		$.get("/descriptioncache", function (response) {
+			$("#description").html(response);
+		});
 	</script>
 </body>
 

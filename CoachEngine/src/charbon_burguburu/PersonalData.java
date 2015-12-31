@@ -21,6 +21,7 @@ public class PersonalData extends HttpServlet{
 
 	private DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 	Entity userExerciceDataEntity = null;
+	
 	public void doPost(HttpServletRequest req, HttpServletResponse resp) throws IOException {
 		System.out.println("On est dans le POST");
 		String userExerciceData = req.getParameter("userExerciceData");
@@ -53,9 +54,10 @@ public class PersonalData extends HttpServlet{
 		// Récupération du résultat de la requète à l’aide de PreparedQuery
 		PreparedQuery pq = datastore.prepare(q);
 		JSONArray Tab= new JSONArray();
+
 		for (Entity result : pq.asIterable()) {
 			System.out.println("On est dans le for");
-			 String date = (String) result.getProperty("date");
+			 String date =  (String)result.getProperty("date");
 			 String idUser = (String) result.getProperty("idUser");
 			 String planTitle = (String) result.getProperty("planTitle");
 			 String exerciceTitle = (String) result.getProperty("exerciceTitle");
