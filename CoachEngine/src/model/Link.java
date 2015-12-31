@@ -7,16 +7,22 @@ public class Link {
 	private String url;
 	private String name;
 	private String time;
-	
-	public Link(String name,Object id,String time){
+
+	public Link(String type,String name,Object idT,Object idE,String time){
 		this.name=name;
-		this.url=generateLink(id);
+		this.url=generateLink(type,idT,idE);
 		this.time = time;
-		
+
 	}
-	private String generateLink(Object id){
-		return "/addtraining?id="+id;
-		
+	private String generateLink(String type,Object idT,Object idE){
+		StringBuffer link = new StringBuffer();
+		if(idE==null){
+			link.append("/result-detail-screen.html?").append(type).append("=").append(idT);
+		}else{
+			link.append("/result-detail-screen.html?").append(type).append("=").append(idE);
+		}
+		return link.toString();
+
 	}
 	public JSONObject toJSON(){
 		JSONObject o = new JSONObject();
@@ -27,8 +33,8 @@ public class Link {
 		} catch (JSONException e) {
 			e.printStackTrace();
 		}
-		
+
 		return o;
-	
+
 	}
 }

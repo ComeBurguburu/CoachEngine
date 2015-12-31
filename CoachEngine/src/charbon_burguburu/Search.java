@@ -21,51 +21,45 @@ import com.google.appengine.labs.repackaged.org.json.JSONObject;
 public class Search extends HttpServlet{
 	private 	DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
 
-	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
-			throws ServletException, IOException {
-		String keyword = req.getParameter("q");
-		JSONObject response = new JSONObject();
-		try {
-			response.put("training", new JSONArray());
-			response.put("exercice", new JSONArray());
-		} catch (JSONException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		
-		Query q = new Query("Training");
-		q.addFilter("title", Query.FilterOperator.EQUAL, keyword);
+	private void search(String table,String key,String keyword,JSONObject response){
+		Query q = new Query(table);
 		// Récupération du résultat de la requète à l’aide de PreparedQuery
 		PreparedQuery pq = datastore.prepare(q);
 
 		for (Entity result : pq.asIterable()) {
 			String title = (String) result.getProperty("title");
-			String id = (String) result.getProperty("ID/Name");
+			Object idT = result.getProperty("training");
+			Object idE = result.getKey().getId();
+			
 			String time=(String)result.getProperty("time");
 
 			try {
-				response.getJSONArray("training").put(new Link(title,id,time).toJSON());
+				if(title.indexOf(keyword)!=-1){
+					response.getJSONArray(table).put(new Link(table,title,idT,idE,time).toJSON());
+				}
 			} catch (JSONException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		}
-		
-		q = new Query("Exercice");
-		q.addFilter("title", Query.FilterOperator.EQUAL, keyword);
-		// Récupération du résultat de la requète à l’aide de PreparedQuery
-		pq = datastore.prepare(q);
-		for (Entity result : pq.asIterable()) {
-			String title = (String) result.getProperty("title");
-			Object id = result.getProperty("training");
-			String time=(String)result.getProperty("time");
-			
-			try {
-				response.getJSONArray("exercice").put(new Link(title,id,time).toJSON());
-			} catch (JSONException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+	}
+
+
+	protected void doGet(HttpServletRequest req, HttpServletResponse resp)
+			throws ServletException, IOException {
+		String search = req.getParameter("q");
+		JSONObject response = new JSONObject();
+		try {
+			response.put("Training", new JSONArray());
+			response.put("Exercice", new JSONArray());
+		} catch (JSONException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+
+		String []keywords = search.split(" ");
+		for(String keyword:keywords){
+			search("Training","title",keyword,response);
+			search("Exercice","title",keyword,response);
 		}
 		resp.getWriter().print(response.toString());
 	}

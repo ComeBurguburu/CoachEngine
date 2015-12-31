@@ -10,21 +10,21 @@ $("#validate").click(function () {
 	tab.Description = $("#inputDescription").val();
 	tab.Domain = $("#e1").val();
 	tab.Date = currentDate.toHHMMSS();
-	
-	if(tab.Title==="" || tab.Description === ""){
+
+	if (tab.Title === "" || tab.Description === "") {
 		$(".alert-warning").text("Title and Description are required").show();
 		$(".alert-success").text("").hide();
 		return;
 	}
-	if(tab.Exercice.length==0){
+	if (tab.Exercice.length === 0) {
 		$(".alert-warning").text("At least one exercice is required").show();
 		$(".alert-success").text("").hide();
 		return;
 	}
-	
+
 	$.post("/addtraining", {
 		training: JSON.stringify(tab)
-	},function(){
+	}, function () {
 		$(".alert-warning").text("").hide();
 		$(".alert-success").text("Training Plan saved").show();
 	});
@@ -88,23 +88,17 @@ $("#buttonAddEx").click(function () {
 		console.log(tab.Exercice[0]);
 
 
-		//for(var i in tabId)
-		//{
-
 		$("#" + currentExo.Title + "ButtonRemove").click(function () {
 			console.log("Button Remove");
 			var grandPere = $(this).parent().parent();
 			var id = grandPere.index();
 			tab.Exercice.splice(id, 1);
 			grandPere.remove();
-			//	tab.Exercice.sl(currentExo);
-			//var x=$(this).data(id);
+
 
 		});
 
 
-
-		//}
 		$("#titleDescription").val("");
 		$("#exerciceDescription").val("");
 		$("#hours").val("");

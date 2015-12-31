@@ -7,7 +7,7 @@ $.get("/login", function (data) {
 
 	}
 	if (!json.login) {
-		if(location.pathname!=="/search.html"){
+		if(location.pathname!=="/search.html" && localStorage.getItem("role")!="admin"){
 			location.href="/search.html";
 		}
 		return;

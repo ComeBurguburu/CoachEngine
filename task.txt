@@ -1,0 +1,7 @@
+Message d'accueil Hugues
+Page de recherche Côme
+OAuth(Connexion Google) Côme
+Add Training Hugues/Côme
+search		Côme
+result		Côme
+personnal data Hugues
