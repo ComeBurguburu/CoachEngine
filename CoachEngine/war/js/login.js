@@ -6,9 +6,11 @@ $.get("/login", function (data) {
 	} catch (e) {
 
 	}
+	//redirect to main page
 	if (!json.login) {
-		if(location.pathname!=="/search.html" && localStorage.getItem("role")!="admin"){
-			location.href="/search.html";
+		if(location.pathname!=="/search.html"){
+			//comment to demontration
+			//location.href="/search.html";
 		}
 		return;
 	} else {

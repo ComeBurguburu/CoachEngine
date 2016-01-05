@@ -2,6 +2,7 @@
 var block = $("tr:eq(0)").clone();
 $("tr:eq(0)").remove();
 
+$(".alert-info").hide();
 if (param().Training!==undefined || param().Exercice!== undefined ) {
 
 
@@ -10,9 +11,9 @@ if (param().Training!==undefined || param().Exercice!== undefined ) {
 		var json = JSON.parse(response);
 		var index = 0;
 		if (json.Exercice === undefined) {
+			$(".alert-info").text("Nothing found :(").show();
 			return;
 		}
-		$(".alert-info").hide();
 		$(".title").text(json.Title);
 		$(".description").text(json.Description);
 		
@@ -39,9 +40,7 @@ if (param().Training!==undefined || param().Exercice!== undefined ) {
 						$(".alert-success").show();
 					});
 				});
-				
-				
-				
+
 			}
 			setTitle(index, value.Title);
 			setTime(index, value.Date);
@@ -50,9 +49,13 @@ if (param().Training!==undefined || param().Exercice!== undefined ) {
 			index++;
 
 		});
-
-
 	});
+}else{
+	if(param().Exercice==undefined && param().Training==undefined){
+		$(".alert-info").html("Please make a search before <u><a href=\"search.html\">Search page</a></u>").show();
+	}else{
+		$(".alert-info").text("Nothing found :(").show();
+	}
 }
 
 function setTitle(index, value) {
