@@ -8,13 +8,13 @@ $.get("/login", function (data) {
 	}
 	//redirect to main page
 	if (!json.login) {
-		if(location.pathname!=="/search.html"){
+		if (location.pathname !== "/search.html") {
 			//comment to demontration
 			//location.href="/search.html";
 		}
 		return;
 	} else {
-		if($(".connectGoogle").length==2){
+		if ($(".connectGoogle").length == 2) {
 			$(".connectGoogle:eq(0)").hide();
 			$(".connectGoogle:eq(1)").show();
 		}
@@ -23,7 +23,18 @@ $.get("/login", function (data) {
 		$(".email").html(json.email);
 		userId = json.id;
 		console.info("ready");
+		$("#logout").click(function () {
+			$.post("/login", {
+				reset: true
+			}, function () {
+
+				document.location.href = "https://www.google.com/accounts/Logout?continue=https://appengine.google.com/_ah/logout?continue=http://coachengine-1147.appspot.com/search.html";
+
+
+			});
+		});
+
+
 	}
 
-
-})
+});

@@ -40,12 +40,15 @@ public class Login extends HttpServlet{
 				e.printStackTrace();
 				return;
 			}
-
-			cache.put("login", login);
-			cache.put("email", email);
-			cache.put("picture", picture);
-			cache.put("id", id);
 			
+			if(req.getParameter("logout")!=null){
+				cache.clear();
+			}else{
+				cache.put("login", login);
+				cache.put("email", email);
+				cache.put("picture", picture);
+				cache.put("id", id);
+			}
 			resp.getWriter().print("ok");
 
 	}
