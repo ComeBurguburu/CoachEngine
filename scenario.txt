@@ -1,0 +1,9 @@
+index.html
+click
+connect throw google with autorisation page
+add a training plan -> add a training
+go back to search
+search for the plan 
+run the training plan (time watch)
+see the data stats
+logout
