@@ -137,5 +137,5 @@ function getTimeExpected(index) {
 }
 
 function isSuccess(index) {
-	return $(".row").eq(index).find(".success").prop("checked");
+	return $(".success").eq(index).prop("checked");
 }
